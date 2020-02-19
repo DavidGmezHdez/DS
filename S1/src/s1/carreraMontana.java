@@ -1,5 +1,9 @@
 package s1;
 
-    public class carreraMontana extends Carrera {
-        
+import java.util.ArrayList;
+
+public class carreraMontana extends Carrera {
+    carreraMontana(ArrayList<Bicicleta> bicis){
+        super(bicis);
     }
+}

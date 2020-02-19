@@ -1,7 +1,8 @@
 package s1;
-    public abstract class factoriaCarrerayBicicleta {
+import java.util.ArrayList;
+public abstract class factoriaCarrerayBicicleta {
             
-            public abstract Carrera crearCarrera();
+    public abstract Carrera crearCarrera(ArrayList<Bicicleta> bicicletas);
 
-            public abstract Bicicleta crearBicicleta();
-    }
+    public abstract Bicicleta crearBicicleta(int id);
+}

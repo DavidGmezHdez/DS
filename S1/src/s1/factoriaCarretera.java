@@ -1,11 +1,16 @@
 package s1;
+
+import java.util.ArrayList;
+
 public class factoriaCarretera extends factoriaCarrerayBicicleta {
 
-	public carreraCarretera crearCarrera() {
-		throw new UnsupportedOperationException();
+	public carreraCarretera crearCarrera(ArrayList<Bicicleta> bicicletas) {
+		carreraCarretera carrera = new carreraCarretera(bicicletas);
+                return carrera;
 	}
 
-	public bicicletaCarretera crearBicicleta() {
-		throw new UnsupportedOperationException();
+	public bicicletaCarretera crearBicicleta(int id) {
+		bicicletaCarretera bicicleta = new bicicletaCarretera(id);
+                return bicicleta;
 	}
 }
