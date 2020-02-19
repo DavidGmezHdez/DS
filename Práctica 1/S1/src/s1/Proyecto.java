@@ -10,7 +10,7 @@ public class Proyecto {
    static Carrera carrea;
    static ArrayList<factoriaCarrerayBicicleta> factorias = new ArrayList<>();
    static private Scanner in = new Scanner(System.in);
-   
+   static private int prueba;
 
     static int leeEntero (int max, String msg1, String msg2) {
       Boolean ok;
