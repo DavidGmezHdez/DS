@@ -103,13 +103,17 @@ public class Cliente {
                             System.out.println("Bicicleta con ID " + id + " añadida");
                         }
                         else{
-                            for(Bicicleta b:this.bicicletas){
-                                if(id == b.getID())
+                            boolean existe = false;
+                            for(int i=0;i<this.bicicletas.size() && !existe;i++){
+                                if(id == this.bicicletas.get(i).getID()){
                                     System.out.println("Error: ya hay una bicicleta con ese ID");
+                                    existe = true;
+                                }
                                 else{
                                     Bicicleta bici = factoria.crearBicicleta(id);
                                     this.bicicletas.add(bici);
                                     System.out.println("Bicicleta con ID " + id + " añadida");
+                                    existe = false;
                                 }
                             }
                         }
