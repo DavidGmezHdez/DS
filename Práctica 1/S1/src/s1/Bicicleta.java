@@ -5,4 +5,8 @@ public abstract class Bicicleta {
     Bicicleta(int id){
         this.id = id;
     }
+    
+    int getID(){
+        return this.id;
+    }
 }
