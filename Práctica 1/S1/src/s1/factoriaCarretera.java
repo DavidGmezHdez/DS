@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class factoriaCarretera extends factoriaCarrerayBicicleta {
 
-	public carreraCarretera crearCarrera(ArrayList<Bicicleta> bicicletas) {
-		carreraCarretera carrera = new carreraCarretera(bicicletas);
+	public carreraCarretera crearCarrera(int codigo) {
+		carreraCarretera carrera = new carreraCarretera(codigo);
                 return carrera;
 	}
 

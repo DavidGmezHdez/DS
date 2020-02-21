@@ -3,18 +3,22 @@ package s1;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Cliente {
    ArrayList<Bicicleta> bicicletas;
-   Carrera carrea;
+   ArrayList<Carrera> carreras;
    factoriaCarrerayBicicleta factoria;
    boolean factoriasCreadas, tipoFactoria; //false -> montaña, true -> carretera
    private Scanner in;
+   int codigo;
    
    Cliente(){
     bicicletas = new ArrayList<>();
     in = new Scanner(System.in);
     factoriasCreadas = false;
+    carreras = new ArrayList<>();
+    codigo = 0;
    }
    
 
@@ -54,6 +58,10 @@ public class Cliente {
                             tab+"Valor erróneo");
       return opcion;
     }
+    
+    public ArrayList<Carrera> getCarreras(){
+        return this.carreras;
+    }
   
     public  void gestionar() {
         int opcion = -1;
@@ -84,45 +92,27 @@ public class Cliente {
            else{
                 if(this.factoriasCreadas && !this.tipoFactoria){
                  opciones = new ArrayList<> 
-                 (Arrays.asList("Terminar","Crear bicicleta montaña","Crear carrera montaña"));
+                 (Arrays.asList("Terminar","Generar Participantes","Crear carrera montaña"));
                  opcion = this.menu("¿Qué deseas hacer?", opciones);
                 }
                 else if(this.factoriasCreadas && this.tipoFactoria){
                     opciones = new ArrayList<> 
-                    (Arrays.asList("Terminar","Crear bicicleta carretera","Crear carrera carretera"));
+                    (Arrays.asList("Terminar","Generar Participantes","Crear carrera carretera"));
                     opcion = this.menu("¿Qué deseas hacer?", opciones);
                 }
                 switch(opcion){
                     case 1:
-                        System.out.println("¿Qué id deseas ponerle a la bicicleta?");
-                        int id = in.nextInt();
-                        
-                        if(this.bicicletas.isEmpty()){
-                            Bicicleta bici = factoria.crearBicicleta(id);
-                            this.bicicletas.add(bici);
-                            System.out.println("Bicicleta con ID " + id + " añadida");
-                        }
-                        else{
-                            boolean existe = false;
-                            for(int i=0;i<this.bicicletas.size() && !existe;i++){
-                                if(id == this.bicicletas.get(i).getID()){
-                                    System.out.println("Error: ya hay una bicicleta con ese ID");
-                                    existe = true;
-                                }
-                                else{
-                                    Bicicleta bici = factoria.crearBicicleta(id);
-                                    this.bicicletas.add(bici);
-                                    System.out.println("Bicicleta con ID " + id + " añadida");
-                                    existe = false;
-                                }
-                            }
-                        }
+                        this.bicicletas = generarParticipantes();
                     break;
                     case 2:
                         if(this.bicicletas.size()>0){
-                            this.carrea = this.factoria.crearCarrera(this.bicicletas);
+                            this.carreras.add(this.factoria.crearCarrera(codigo));
+                            this.carreras.get(codigo).añadirParticipantes(bicicletas);
                             System.out.println("Carrera creada, mostrando bicicletas");
-                            this.carrea.mostrarBicicletas();
+                            this.carreras.get(codigo).mostrarBicicletas();
+                            this.codigo++;
+                            this.bicicletas.clear();
+                            this.factoriasCreadas = false;                              //Ya has creado una carrera, volvemos al principio del menu
                         }
                         else
                             System.out.println("Necesitas crear al menos una bicicleta");
@@ -130,5 +120,16 @@ public class Cliente {
                 }         
             } 
         }    
+    }
+    
+    public ArrayList<Bicicleta> generarParticipantes(){
+        Random rand = new Random();
+        ArrayList<Bicicleta> bicis = new ArrayList();
+        int id;
+        for(int i=1;i<=20;i++){
+            id = rand.nextInt(10)+2;
+            bicis.add(this.factoria.crearBicicleta(id));
+        }
+        return bicis;
     }
 }

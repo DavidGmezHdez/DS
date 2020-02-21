@@ -9,4 +9,9 @@ public abstract class Bicicleta {
     int getID(){
         return this.id;
     }
+    
+    @Override
+    public String toString(){
+        return "Bicicleta numero " + id + "\n";
+    }
 }

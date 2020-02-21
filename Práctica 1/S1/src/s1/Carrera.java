@@ -3,33 +3,40 @@ package s1;
 import java.util.ArrayList;
 import java.util.Collections;
     public abstract class Carrera extends Thread {
-            private ArrayList<Bicicleta> bicicletas;
+            protected ArrayList<Bicicleta> bicicletas;
+            private int codigoCarrera;
             
-            Carrera(ArrayList<Bicicleta> bicis){
-                this.bicicletas = bicis;
+            Carrera(int codigo){
+                this.codigoCarrera = codigo;
+                bicicletas = new ArrayList<>();
             }
             
             public ArrayList<Bicicleta> getBicicletas(){
                 return this.bicicletas;
             }
             
+            public void añadirParticipantes(ArrayList<Bicicleta> bicicletas){
+                this.bicicletas = bicicletas;
+            }
+            
+            public int getCodigo(){
+                return codigoCarrera;
+            }
+            
             public void mostrarBicicletas(){
-                for(Bicicleta b:this.bicicletas){
-                    System.out.println("Bicicleta numero " + b.getID());
+                for(int i=0;i<this.bicicletas.size();i++){
+                    System.out.println(this.bicicletas.get(i).toString());
                 }
             }
             
             public void mostrarRanking(){
+                System.out.println("La carrera ha acabado, el resultado ha sido el siguiente: ");
                 for(int i=1;i<=this.bicicletas.size();i++){
-                    System.out.println(i+ ".- Bicicleta " + this.bicicletas.get(i).getID());
+                    System.out.println("Carrera " + this.codigoCarrera + ".Puesto " + i + ".- Bicicleta " + this.bicicletas.get(i).getID());
                 }
             }
             
-            public void correrCarrera(){
-                run();
-                Collections.shuffle(bicicletas);
-                
-                this.mostrarRanking();
-            }
+            public abstract void run();
+
 
     }
