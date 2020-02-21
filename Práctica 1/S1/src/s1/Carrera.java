@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
     public abstract class Carrera extends Thread {
             protected ArrayList<Bicicleta> bicicletas;
-            private int codigoCarrera;
+            public int codigoCarrera;
             
             Carrera(int codigo){
                 this.codigoCarrera = codigo;
@@ -29,12 +29,7 @@ import java.util.Collections;
                 }
             }
             
-            public void mostrarRanking(){
-                System.out.println("La carrera ha acabado, el resultado ha sido el siguiente: ");
-                for(int i=1;i<=this.bicicletas.size();i++){
-                    System.out.println("Carrera " + this.codigoCarrera + ".Puesto " + i + ".- Bicicleta " + this.bicicletas.get(i).getID());
-                }
-            }
+            public abstract void mostrarRanking();           
             
             public abstract void run();
 

@@ -75,6 +75,7 @@ public class Cliente {
             opciones = new ArrayList<> 
             (Arrays.asList("Terminar","Construir factoria montaña","Construir factoria carretera"));
             opcion = this.menu("¿Qué tipo de factoria deseas construir?", opciones);
+            
             switch(opcion){
                 case 1:
                     factoria = new factoriaMontana();
@@ -103,15 +104,15 @@ public class Cliente {
                 switch(opcion){
                     case 1:
                         this.bicicletas = generarParticipantes();
+                        System.out.println("Participantes apuntados");
                     break;
                     case 2:
                         if(this.bicicletas.size()>0){
                             this.carreras.add(this.factoria.crearCarrera(codigo));
                             this.carreras.get(codigo).añadirParticipantes(bicicletas);
-                            System.out.println("Carrera creada, mostrando bicicletas");
-                            this.carreras.get(codigo).mostrarBicicletas();
-                            this.codigo++;
-                            this.bicicletas.clear();
+                            System.out.println("Carrera creada");
+                            codigo++;
+
                             this.factoriasCreadas = false;                              //Ya has creado una carrera, volvemos al principio del menu
                         }
                         else
@@ -123,12 +124,16 @@ public class Cliente {
     }
     
     public ArrayList<Bicicleta> generarParticipantes(){
-        Random rand = new Random();
         ArrayList<Bicicleta> bicis = new ArrayList();
-        int id;
-        for(int i=1;i<=20;i++){
-            id = rand.nextInt(10)+2;
-            bicis.add(this.factoria.crearBicicleta(id));
+        Random rand = new Random();
+        int nparticipantes = rand.nextInt(20);
+        /*if(!bicicletas.isEmpty()){
+            this.bicicletas.clear();
+        }
+*/
+
+        for(int i=1;i<=nparticipantes;i++){
+            bicis.add(this.factoria.crearBicicleta(i));
         }
         return bicis;
     }

@@ -22,7 +22,6 @@ public class Proyecto {
     
     public static void main(String[] args) {
         cliente.gestionar();
-        cliente.getCarreras().get(0).mostrarBicicletas();
         correrCarreras();
         obtenerRankings();      
     }
