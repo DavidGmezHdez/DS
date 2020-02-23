@@ -130,7 +130,7 @@ public class Cliente {
         /*if(!bicicletas.isEmpty()){
             this.bicicletas.clear();
         }
-*/
+        */
 
         for(int i=1;i<=nparticipantes;i++){
             bicis.add(this.factoria.crearBicicleta(i));
