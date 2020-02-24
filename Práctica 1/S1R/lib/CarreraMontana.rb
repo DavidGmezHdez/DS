@@ -10,11 +10,24 @@ module Ruby
 		end
 
 		public
-		def initialize()
-			# @AttributeType Array
-			@_bicis
-
-			# Not yet implemented
-		end
+		def initialize(numero)
+		 super(numero)
+    end
+    
+    public 
+    def correr
+      puts "Comienza la carrera de carretera"
+      @bicis = @bicis.shuffle
+      tamanio=@bicis.lenght
+      abandonos = tamanio*0.1
+      puts "El numero de abandonos es #{abandonos}"
+      for i in (0..abandonos)
+        caido=rand(1..tamanio)
+        puts "El participante #{caido} se ha retirado de la carrera de montania"
+        @bicis.delete(caido)
+      end
+      
+    end
+    
 	end
 end
