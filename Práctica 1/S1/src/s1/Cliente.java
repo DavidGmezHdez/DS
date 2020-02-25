@@ -78,13 +78,13 @@ public class Cliente {
             
             switch(opcion){
                 case 1:
-                    factoria = new factoriaMontana();
+                    factoria = (factoriaCarrerayBicicleta) new factoriaMontana();
                     this.tipoFactoria = false;
                     this.factoriasCreadas = true;
                     System.out.println("Factoría de montaña creada");
                 break;
                 case 2:
-                    factoria = new factoriaCarretera();
+                    factoria = (factoriaCarrerayBicicleta) new factoriaCarretera();
                     this.tipoFactoria = true;
                     this.factoriasCreadas = true;
                     System.out.println("Factoría de carretera creada");
@@ -126,11 +126,7 @@ public class Cliente {
     public ArrayList<Bicicleta> generarParticipantes(){
         ArrayList<Bicicleta> bicis = new ArrayList();
         Random rand = new Random();
-        int nparticipantes = rand.nextInt(20);
-        /*if(!bicicletas.isEmpty()){
-            this.bicicletas.clear();
-        }
-        */
+        int nparticipantes = rand.nextInt(10) + 10;
 
         for(int i=1;i<=nparticipantes;i++){
             bicis.add(this.factoria.crearBicicleta(i));

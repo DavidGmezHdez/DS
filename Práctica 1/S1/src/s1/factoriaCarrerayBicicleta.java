@@ -1,6 +1,6 @@
 package s1;
 import java.util.ArrayList;
-public abstract class factoriaCarrerayBicicleta {
+public interface factoriaCarrerayBicicleta {
             
     public abstract Carrera crearCarrera(int codigo);
 
