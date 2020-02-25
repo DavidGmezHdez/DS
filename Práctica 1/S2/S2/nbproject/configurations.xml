@@ -4,6 +4,13 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Bus.h</itemPath>
+      <itemPath>ComponenteEquipo.h</itemPath>
+      <itemPath>Disco.h</itemPath>
+      <itemPath>Tarjeta.h</itemPath>
+      <itemPath>VisitanteEquipo.h</itemPath>
+      <itemPath>VisitantePrecio.h</itemPath>
+      <itemPath>VisitantePrecioDetallado.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,11 +19,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Bus.cpp</itemPath>
-      <itemPath>Disco.cpp</itemPath>
-      <itemPath>Tarjeta.cpp</itemPath>
-      <itemPath>VisitantePrecio.cpp</itemPath>
-      <itemPath>VisitantePrecioDetallado.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -41,15 +43,19 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Bus.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Bus.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Disco.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ComponenteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Tarjeta.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Disco.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="VisitantePrecio.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Tarjeta.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="VisitantePrecioDetallado.cpp" ex="false" tool="1" flavor2="0">
+      <item path="VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VisitantePrecio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VisitantePrecioDetallado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -74,15 +80,19 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Bus.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Bus.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Disco.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ComponenteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Tarjeta.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Disco.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="VisitantePrecio.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Tarjeta.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="VisitantePrecioDetallado.cpp" ex="false" tool="1" flavor2="0">
+      <item path="VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VisitantePrecio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VisitantePrecioDetallado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

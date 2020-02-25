@@ -35,11 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Bus.o \
-	${OBJECTDIR}/Disco.o \
-	${OBJECTDIR}/Tarjeta.o \
-	${OBJECTDIR}/VisitantePrecio.o \
-	${OBJECTDIR}/VisitantePrecioDetallado.o \
 	${OBJECTDIR}/main.o
 
 
@@ -66,31 +61,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/s2.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/s2 ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/Bus.o: Bus.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bus.o Bus.cpp
-
-${OBJECTDIR}/Disco.o: Disco.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Disco.o Disco.cpp
-
-${OBJECTDIR}/Tarjeta.o: Tarjeta.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tarjeta.o Tarjeta.cpp
-
-${OBJECTDIR}/VisitantePrecio.o: VisitantePrecio.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitantePrecio.o VisitantePrecio.cpp
-
-${OBJECTDIR}/VisitantePrecioDetallado.o: VisitantePrecioDetallado.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitantePrecioDetallado.o VisitantePrecioDetallado.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
