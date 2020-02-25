@@ -1,20 +1,16 @@
-require('./Ruby/Prototipo.rb');
-
 module Ruby
 	public
 	class Carrera < Prototipo
     
-    attr_accessor:bicis
-    attr_accessor:codigo
+    attr_accessor:bicis,:codigo
     
 		public
 		def clonar()
-			# Not yet implemented
 		end
 
 		public
-		def initialize(numero)
-      @codigo=numero
+		def initialize()
+      @codigo=0
 			@bicis=Array.new
 		end
     

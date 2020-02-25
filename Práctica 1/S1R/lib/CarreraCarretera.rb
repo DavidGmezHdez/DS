@@ -6,7 +6,7 @@ module Ruby
 
 		public
 		def clonar()
-			# Not yet implemented
+			return self
 		end
 
 		public
@@ -23,7 +23,7 @@ module Ruby
       puts "El numero de abandonos es #{abandonos}"
       for i in (0..abandonos)
         caido=rand(1..tamanio)
-        puts "El participante #{caido} se ha retirado"
+        puts "El participante #{caido} se ha retirado de la carrera de carretera"
         @bicis.delete(caido)
       end
       

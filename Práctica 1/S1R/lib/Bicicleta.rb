@@ -8,16 +8,12 @@ module Ruby
     
 		public
 		def clonar()
-      
-			# Not yet implemented
 		end
 
 		public
-		def initialize(numero)
-			# @AttributeType int
-			@_id=numero
-
-			# Not yet implemented
+		def initialize()
+			@_id=0
 		end
+    
 	end
 end

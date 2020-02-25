@@ -6,12 +6,12 @@ module Ruby
 
 		public
 		def clonar()
-			# Not yet implemented
+			return self
 		end
 
 		public
 		def initialize(numero)
-		 super(numero)
+      super(numero)
     end
     
     public 
