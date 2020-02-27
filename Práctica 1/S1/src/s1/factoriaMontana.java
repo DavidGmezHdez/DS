@@ -2,7 +2,7 @@ package s1;
 
 import java.util.ArrayList;
 
-public class factoriaMontana extends factoriaCarrerayBicicleta {
+public class factoriaMontana implements factoriaCarrerayBicicleta {
 
 	public carreraMontana crearCarrera(int codigo) {
             carreraMontana carrera = new carreraMontana(codigo);
