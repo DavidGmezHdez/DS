@@ -1,16 +1,24 @@
+=begin
+require('../Ruby/Cliente.rb');
+=end
 module Ruby
 	public
 	class Proyecto
     
-		public
+    @cliente=Cliente.new
+    
+    public 
+    def corrercarreras
+      for i in @cliente.carreras.length
+        @cliente.carreras[i].correr
+      end
+    end
+  
+    
+    public
 		def main()
-			puts "Hola"
+			@cliente.gestionar
 		end
-   
-		public
-		def initialize()
-
-			# Not yet implemented
-		end
+    
 	end
 end
