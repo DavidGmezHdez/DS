@@ -4,13 +4,16 @@
 #include <iostream>
 #include <string>
 #include "VisitanteEquipo.h"
+#include "String.h"
+#include "ComponenteEquipo.h"
 
 using namespace std;
 
-class Bus : ComponenteEquipo{
+class Bus : public ComponenteEquipo{
     public:
-        void aceptar(VisitanteEquipo visitante);
-    
+        Bus(){};
+        Bus(string nom, float p);
+        void aceptar(VisitanteEquipo visitante, Cliente cliente);
 };
 
 

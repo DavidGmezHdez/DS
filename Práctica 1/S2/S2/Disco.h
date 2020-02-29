@@ -5,13 +5,16 @@
 #include <iostream>
 #include <string>
 #include "VisitanteEquipo.h"
+#include "String.h"
+#include "ComponenteEquipo.h"
 
 using namespace std;
 
-class Disco : ComponenteEquipo{
+class Disco : public ComponenteEquipo{
     public:
-        void aceptar(VisitanteEquipo visitante);
-    
+        Disco(){};
+        Disco(string nom, float p);
+        void aceptar(VisitanteEquipo visitante, Cliente cliente);
 };
 
 #endif /* DISCO_H */

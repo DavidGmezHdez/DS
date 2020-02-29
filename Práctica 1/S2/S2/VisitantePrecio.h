@@ -9,9 +9,10 @@ using namespace std;
 
 class VisitantePrecio : VisitanteEquipo{
     public:
-        void visitarDisco(Disco d);
-        void visitarTarjeta(Tarjeta t);
-        void visitarBus(Bus b);
+        VisitantePrecio();
+        void visitarDisco(Disco d, Cliente cliente);
+        void visitarTarjeta(Tarjeta t, Cliente cliente);
+        void visitarBus(Bus b, Cliente cliente);
 };
 
 #endif /* VISITANTEPRECIO_H */

@@ -8,9 +8,11 @@
 
 using namespace std;
 
-class Tarjeta : ComponenteEquipo{
+class Tarjeta : public ComponenteEquipo{
     public:
-        void aceptar(VisitanteEquipo visitante);
+        Tarjeta(){};
+        Tarjeta(string nom, float p);
+        void aceptar(VisitanteEquipo visitante, Cliente cliente);
     
 };
 

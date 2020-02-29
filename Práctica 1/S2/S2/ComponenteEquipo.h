@@ -4,15 +4,20 @@
 #include <iostream>
 #include <string>
 #include "VisitanteEquipo.h"
+#include "Cliente.h"
 
 using namespace std;
-
 class ComponenteEquipo{
-    private:
-        String nombre;
+    protected:
+        string nombre;
         float precio;
     public:
-        virtual void aceptar(VisitanteEquipo visitante);
+        ComponenteEquipo(){};
+        ComponenteEquipo(string n, float p);
+        float getPrecio();
+        std::string getNombre();
+        virtual void aceptar(VisitanteEquipo visitante, Cliente cliente);
+
     
 };
 

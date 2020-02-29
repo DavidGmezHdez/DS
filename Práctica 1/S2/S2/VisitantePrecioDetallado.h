@@ -4,14 +4,20 @@
 #include <iostream>
 #include <string>
 #include "ComponenteEquipo.h"
+#include <vector>
+
 
 using namespace std;
 
-class VisitantePrecio : VisitanteEquipo{
+class VisitantePrecioDetallado : VisitanteEquipo{
+    private:
+        vector<pair<string,float>> equipos;
     public:
-        void visitarDisco(Disco d);
-        void visitarTarjeta(Tarjeta t);
-        void visitarBus(Bus b);
+        VisitantePrecioDetallado();
+        void visitarDisco(Disco d, Cliente cliente);
+        void visitarTarjeta(Tarjeta t, Cliente cliente);
+        void visitarBus(Bus b, Cliente cliente);
+        void restaurar();
 };
 
 #endif /* VISITANTEPRECIODETALLADO_H */

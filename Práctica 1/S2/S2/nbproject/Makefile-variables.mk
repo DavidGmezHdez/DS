@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=None-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/None-Windows
+CND_PLATFORM_Debug=Cygwin-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
 CND_ARTIFACT_NAME_Debug=s2
-CND_ARTIFACT_PATH_Debug=dist/Debug/None-Windows/s2
-CND_PACKAGE_DIR_Debug=dist/Debug/None-Windows/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/s2
+CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
 CND_PACKAGE_NAME_Debug=s2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/None-Windows/package/s2.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/s2.tar
 # Release configuration
-CND_PLATFORM_Release=None-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/None-Windows
+CND_PLATFORM_Release=Cygwin-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
 CND_ARTIFACT_NAME_Release=s2
-CND_ARTIFACT_PATH_Release=dist/Release/None-Windows/s2
-CND_PACKAGE_DIR_Release=dist/Release/None-Windows/package
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/s2
+CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
 CND_PACKAGE_NAME_Release=s2.tar
-CND_PACKAGE_PATH_Release=dist/Release/None-Windows/package/s2.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/s2.tar
 #
 # include compiler specific variables
 #

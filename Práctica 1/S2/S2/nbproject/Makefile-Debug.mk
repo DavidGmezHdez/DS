@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=None-Windows
+CND_PLATFORM=Cygwin-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -35,6 +35,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Bus.o \
+	${OBJECTDIR}/Cliente.o \
+	${OBJECTDIR}/ComponenteEquipo.o \
+	${OBJECTDIR}/Disco.o \
+	${OBJECTDIR}/Equipo.o \
+	${OBJECTDIR}/Tarjeta.o \
+	${OBJECTDIR}/VisitantePrecio.o \
+	${OBJECTDIR}/VisitantePrecioDetallado.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,6 +69,46 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/s2.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/s2 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Bus.o: Bus.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bus.o Bus.cpp
+
+${OBJECTDIR}/Cliente.o: Cliente.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cliente.o Cliente.cpp
+
+${OBJECTDIR}/ComponenteEquipo.o: ComponenteEquipo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComponenteEquipo.o ComponenteEquipo.cpp
+
+${OBJECTDIR}/Disco.o: Disco.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Disco.o Disco.cpp
+
+${OBJECTDIR}/Equipo.o: Equipo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Equipo.o Equipo.cpp
+
+${OBJECTDIR}/Tarjeta.o: Tarjeta.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tarjeta.o Tarjeta.cpp
+
+${OBJECTDIR}/VisitantePrecio.o: VisitantePrecio.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitantePrecio.o VisitantePrecio.cpp
+
+${OBJECTDIR}/VisitantePrecioDetallado.o: VisitantePrecioDetallado.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitantePrecioDetallado.o VisitantePrecioDetallado.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
