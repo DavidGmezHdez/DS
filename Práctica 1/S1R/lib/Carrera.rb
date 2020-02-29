@@ -1,6 +1,6 @@
 module Ruby
 	public
-	class Carrera < Prototipo
+	class Carrera
     
     attr_accessor:bicis,:codigo
     

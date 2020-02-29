@@ -6,8 +6,6 @@ module Ruby
     
     attr_accessor :bicicletas,:carreras,:factoria    
 
-    
-    
     def initialize 
       @bicicletas=Array.new
       @carreras=Array.new
@@ -88,7 +86,7 @@ module Ruby
           end
           case @opcion
             when 1
-              @bicicletas = generarParticipantes()
+              @bicicletas = generarparticipantes()
               puts "Participantes apuntados"
             when 2
               if(@bicicletas.length>0)
@@ -106,10 +104,10 @@ module Ruby
         end  
     end 
     
-    def generarParticipantes
+    def generarparticipantes
       bicis=Array.new 
-      numPart=rand(1..10)+10
-      for i in numPart
+      numpart=rand(1..10)+10
+      for i in numpart
         bici=@factoria.crearBicicleta()
         bici.id=bici.id+i
         bicis<<bici
