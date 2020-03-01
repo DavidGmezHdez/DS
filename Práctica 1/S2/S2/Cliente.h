@@ -4,9 +4,7 @@
 
 #include <iostream>
 #include <string>
-#include "VisitanteEquipo.h"
 #include "String.h"
-#include "ComponenteEquipo.h"
 
 using namespace std;
 

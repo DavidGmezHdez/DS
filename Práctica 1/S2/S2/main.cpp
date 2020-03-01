@@ -1,5 +1,8 @@
 #include <cstdlib>
 #include <iostream>
+#include "Cliente.h"
+#include "VisitanteEquipo.h"
+#include "ComponenteEquipo.h"
 
 using namespace std;
 

@@ -4,9 +4,10 @@
 
 #include <iostream>
 #include <string>
-#include "VisitanteEquipo.h"
 #include "Cliente.h"
-#include "ComponenteEquipo.h"
+#include "Bus.h"
+#include "Disco.h"
+#include "Tarjeta.h"
 
 class Equipo{
     protected:

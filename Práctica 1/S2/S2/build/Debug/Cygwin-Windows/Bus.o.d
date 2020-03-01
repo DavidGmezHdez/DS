@@ -1,14 +1,21 @@
-build/Debug/Cygwin-Windows/Bus.o: Bus.cpp Bus.h VisitanteEquipo.h \
- ComponenteEquipo.h Cliente.h Disco.h Tarjeta.h
+build/Debug/Cygwin-Windows/Bus.o: Bus.cpp Bus.h ComponenteEquipo.h \
+ Cliente.h VisitanteEquipo.h Equipo.h Disco.h Tarjeta.h VisitantePrecio.h \
+ VisitantePrecioDetallado.h
 
 Bus.h:
-
-VisitanteEquipo.h:
 
 ComponenteEquipo.h:
 
 Cliente.h:
 
+VisitanteEquipo.h:
+
+Equipo.h:
+
 Disco.h:
 
 Tarjeta.h:
+
+VisitantePrecio.h:
+
+VisitantePrecioDetallado.h:

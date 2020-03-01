@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <string>
-
-#include "VisitanteEquipo.h"
+#include "ComponenteEquipo.h"
 
 using namespace std;
 
@@ -12,7 +11,7 @@ class Tarjeta : public ComponenteEquipo{
     public:
         Tarjeta(){};
         Tarjeta(string nom, float p);
-        void aceptar(VisitanteEquipo visitante, Cliente cliente);
+        void aceptar(VisitanteEquipo &visitante, Cliente &cliente);
     
 };
 

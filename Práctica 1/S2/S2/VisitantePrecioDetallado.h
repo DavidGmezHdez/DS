@@ -3,9 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include "ComponenteEquipo.h"
 #include <vector>
-
+#include "VisitanteEquipo.h"
 
 using namespace std;
 
@@ -14,9 +13,9 @@ class VisitantePrecioDetallado : VisitanteEquipo{
         vector<pair<string,float>> equipos;
     public:
         VisitantePrecioDetallado();
-        void visitarDisco(Disco d, Cliente cliente);
-        void visitarTarjeta(Tarjeta t, Cliente cliente);
-        void visitarBus(Bus b, Cliente cliente);
+        void visitarDisco(Disco *d, Cliente cliente);
+        void visitarTarjeta(Tarjeta *t, Cliente cliente);
+        void visitarBus(Bus *b, Cliente cliente);
         void restaurar();
 };
 
