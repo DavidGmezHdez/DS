@@ -11,12 +11,11 @@
 using namespace std;
 
 class VisitanteEquipo{
-    protected:
-        float precioTotal;
     public:
         virtual void visitarDisco(Disco *d, Cliente cliente);
         virtual void visitarTarjeta(Tarjeta *t, Cliente cliente);
         virtual void visitarBus(Bus *b, Cliente cliente);
+        ~VisitanteEquipo();
 };
 
 #endif /* VISITANTEEQUIPO_H */

@@ -1,4 +1,4 @@
-build/Debug/Cygwin-Windows/ComponenteEquipo.o: ComponenteEquipo.cpp \
+build/Debug/Cygwin-Windows/VisitanteEquipo.o: VisitanteEquipo.cpp \
  VisitanteEquipo.h Equipo.h Cliente.h Bus.h ComponenteEquipo.h Disco.h \
  Tarjeta.h
 

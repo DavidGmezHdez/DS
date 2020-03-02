@@ -1,10 +1,4 @@
 #include "Equipo.h"
-#include "Bus.h"
-#include "Tarjeta.h"
-#include "Disco.h"
-#include "VisitanteEquipo.h"
-#include "VisitantePrecio.h"
-#include "VisitantePrecioDetallado.h"
 
 Equipo::Equipo(Bus bs, Tarjeta tar, Disco disc){
     this->b = bs;

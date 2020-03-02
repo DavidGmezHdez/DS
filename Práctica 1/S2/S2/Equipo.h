@@ -8,6 +8,7 @@
 #include "Bus.h"
 #include "Disco.h"
 #include "Tarjeta.h"
+#include "VisitanteEquipo.h"
 
 class Equipo{
     protected:

@@ -20,6 +20,7 @@ class ComponenteEquipo{
         float getPrecio();
         std::string getNombre();
         virtual void aceptar(VisitanteEquipo &visitante, Cliente &cliente);
+        ~ComponenteEquipo();
 
 };
 

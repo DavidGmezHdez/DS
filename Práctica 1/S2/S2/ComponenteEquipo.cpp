@@ -1,4 +1,4 @@
-#include "ComponenteEquipo.h"
+#include "VisitanteEquipo.h"
 
 ComponenteEquipo::ComponenteEquipo(string n, float p){
     this->nombre = n;
@@ -11,4 +11,9 @@ string ComponenteEquipo::getNombre(){
 
 float ComponenteEquipo::getPrecio(){
     return this->precio;
+}
+
+ComponenteEquipo::~ComponenteEquipo(){
+    this->nombre = "";
+    this->precio = 0;
 }
