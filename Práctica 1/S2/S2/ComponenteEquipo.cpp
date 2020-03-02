@@ -1,4 +1,5 @@
 #include "VisitanteEquipo.h"
+#include "ComponenteEquipo.h"
 
 ComponenteEquipo::ComponenteEquipo(string n, float p){
     this->nombre = n;

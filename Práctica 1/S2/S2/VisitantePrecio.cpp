@@ -15,3 +15,5 @@ void VisitantePrecio::visitarTarjeta(Tarjeta *t, Cliente cliente){
 void VisitantePrecio::visitarBus(Bus *b, Cliente cliente){
     this->precioTotal += b->getPrecio() * cliente.getDescuento();
 }
+
+void mostrarResultados();

@@ -12,13 +12,13 @@
 
 class Equipo{
     protected:
-        Bus b;
-        Tarjeta t;
-        Disco d;
+        Bus *b;
+        Disco *d;
+        Tarjeta *t;
     public:
         Equipo(){};
-        Equipo(Bus bs, Tarjeta tar, Disco disc);
-        void aceptar(VisitanteEquipo visitante, Cliente cliente);
+        Equipo(Bus *bs,Disco *disc, Tarjeta *tar);
+        void aceptar(VisitanteEquipo& visitante, Cliente cliente);
 };
 
 #endif /* EQUIPO_H */

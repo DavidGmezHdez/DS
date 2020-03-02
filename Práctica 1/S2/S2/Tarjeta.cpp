@@ -5,7 +5,7 @@
 
 Tarjeta::Tarjeta(string nom, float p){
     this->nombre = nom;
-    this->precio = precio;
+    this->precio = p;
 }
 
 void Tarjeta::aceptar(VisitanteEquipo &visitante, Cliente &cliente){

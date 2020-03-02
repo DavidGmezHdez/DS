@@ -8,7 +8,8 @@
 
 using namespace std;
 
-class VisitantePrecioDetallado : VisitanteEquipo{
+class VisitantePrecioDetallado : public VisitanteEquipo
+{
     private:
         vector<pair<string,float>> equipos;
     public:
@@ -17,6 +18,8 @@ class VisitantePrecioDetallado : VisitanteEquipo{
         void visitarTarjeta(Tarjeta *t, Cliente cliente);
         void visitarBus(Bus *b, Cliente cliente);
         void restaurar();
+        void mostrarResultados();
+
 };
 
 #endif /* VISITANTEPRECIODETALLADO_H */

@@ -27,7 +27,6 @@
       <itemPath>Disco.cpp</itemPath>
       <itemPath>Equipo.cpp</itemPath>
       <itemPath>Tarjeta.cpp</itemPath>
-      <itemPath>VisitanteEquipo.cpp</itemPath>
       <itemPath>VisitantePrecio.cpp</itemPath>
       <itemPath>VisitantePrecioDetallado.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -77,8 +76,6 @@
       <item path="Tarjeta.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Tarjeta.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="VisitanteEquipo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -136,8 +133,6 @@
       <item path="Tarjeta.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Tarjeta.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="VisitanteEquipo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
