@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=Cygwin-Windows
+CND_PLATFORM=None-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -40,10 +40,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/ComponenteEquipo.o \
 	${OBJECTDIR}/Disco.o \
 	${OBJECTDIR}/Equipo.o \
+	${OBJECTDIR}/Proyecto.o \
 	${OBJECTDIR}/Tarjeta.o \
 	${OBJECTDIR}/VisitantePrecio.o \
-	${OBJECTDIR}/VisitantePrecioDetallado.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/VisitantePrecioDetallado.o
 
 
 # C Compiler Flags
@@ -95,6 +95,11 @@ ${OBJECTDIR}/Equipo.o: Equipo.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Equipo.o Equipo.cpp
 
+${OBJECTDIR}/Proyecto.o: Proyecto.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Proyecto.o Proyecto.cpp
+
 ${OBJECTDIR}/Tarjeta.o: Tarjeta.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -109,11 +114,6 @@ ${OBJECTDIR}/VisitantePrecioDetallado.o: VisitantePrecioDetallado.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitantePrecioDetallado.o VisitantePrecioDetallado.cpp
-
-${OBJECTDIR}/main.o: main.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
