@@ -1,6 +1,3 @@
-=begin
-require('../Ruby/Cliente.rb');
-=end
 #encoding: UTF-8
 require_relative "Cliente"
 
