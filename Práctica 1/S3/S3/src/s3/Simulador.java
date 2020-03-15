@@ -35,7 +35,7 @@ public class Simulador extends Observable implements Runnable{
         
         this.temperaturaC = t;
         
-        double tempF=((double)(t*(9/5))+32);
+        double tempF=((double)(t*(9.0/5.0))+32);
         this.temperaturaF = tempF;
         
         setChanged();

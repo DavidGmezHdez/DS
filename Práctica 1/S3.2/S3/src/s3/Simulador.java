@@ -60,9 +60,9 @@ public class Simulador extends Observable implements Runnable{
         this.temperaturaCCm = cm;
         this.temperaturaCAn = an;
         
-        double tempFCl=((double)(cl*(9/5))+32);
-        double tempFCm=((double)(cm*(9/5))+32);
-        double tempFAn=((double)(an*(9/5))+32);
+        double tempFCl=((double)(cl*(9.0/5.0))+32);
+        double tempFCm=((double)(cm*(9.0/5.0))+32);
+        double tempFAn=((double)(an*(9.0/5.0))+32);
         
         this.temperaturaFCl = tempFCl;
         this.temperaturaFCm = tempFCm;
