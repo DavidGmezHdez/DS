@@ -3,5 +3,6 @@ public enum EstadoMotor {
     ACELERANDO,
     APAGADO,
     FRENANDO,
-    ENCENDIDO
+    ENCENDIDO,
+    CONSTANTE
 }

@@ -26,7 +26,6 @@ public class Salpicadero {
             System.out.println("El resultado de la simulación ha sido de " + (this.tactual-this.tanterior) + " milisegundos");
         }
         else if(estadoMotor == EstadoMotor.APAGADO){
-            System.out.println("Encendiendo motor del coche");
             estadoMotor = EstadoMotor.ENCENDIDO;
             this.tactual = System.currentTimeMillis();
             this.setRevoluciones(0);
@@ -34,7 +33,6 @@ public class Salpicadero {
         }
         
         else if(estadoMotor == EstadoMotor.ENCENDIDO){
-            System.out.println("Apagamos motor del coche");
             estadoMotor = EstadoMotor.APAGADO;
             this.setRevoluciones(0);
             this.setVelocidad(0);
