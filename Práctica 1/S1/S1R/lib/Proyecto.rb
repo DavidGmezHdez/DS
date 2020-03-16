@@ -1,5 +1,5 @@
 #encoding: UTF-8
-require_relative "Cliente"
+require_relative "Cliente.rb"
 
 module Ruby
 	class Proyecto
