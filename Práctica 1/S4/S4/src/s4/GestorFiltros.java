@@ -2,11 +2,11 @@ package s4;
 
 public class GestorFiltros extends Thread {
     public CadenaFiltros cadena;
-    public Salpicadero salpicadero;
+    public GUISalpicadero salpicadero;
     
-    GestorFiltros(){
+    GestorFiltros(GUISalpicadero salp){
         this.cadena =  new CadenaFiltros();
-        this.salpicadero = new Salpicadero();
+        this.salpicadero = salp;
     }
     
     public void llamadaFiltros(EstadoMotor estado){
@@ -18,5 +18,6 @@ public class GestorFiltros extends Thread {
     public void run(){
         this.llamadaFiltros(EstadoMotor.APAGADO);
         this.salpicadero.setRevoluciones(0);
+        this.salpicadero.setDistancia(0);
     }
 }

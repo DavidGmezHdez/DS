@@ -9,11 +9,21 @@ import java.util.logging.Logger;
 public class GUISalpicadero extends javax.swing.JFrame {
     
     public GestorFiltros gestor;
+    protected CuentaKilometros cKilometros;
+    protected Velocimetro velocimetro;
+    protected CuentaRevoluciones cRevoluciones;
+    
+    long tinicio = 0, tactual = 0, tanterior = 0;
+    private final double radio = 0.15;
     /**
      * Creates new form GUISalpicadero
      */
     public GUISalpicadero() {
-        this.gestor = new GestorFiltros();
+        this.gestor = new GestorFiltros(this);
+        this.cKilometros = new CuentaKilometros();
+        this.velocimetro = new Velocimetro();
+        this.cRevoluciones = new CuentaRevoluciones();
+        this.tinicio =  System.currentTimeMillis();
 
         
         initComponents();
@@ -23,6 +33,10 @@ public class GUISalpicadero extends javax.swing.JFrame {
         
         this.Acelerador.setEnabled(false);
         this.Freno.setEnabled(false);
+        
+        this.Velocidad.setText(String.valueOf(0.0));
+        this.Revoluciones.setText(String.valueOf(0.0));
+        this.Distancia.setText(String.valueOf(0.0));
     }
 
     /**
@@ -193,13 +207,6 @@ public class GUISalpicadero extends javax.swing.JFrame {
             this.Acelerador.setEnabled(true);
             this.Freno.setEnabled(true);
             
-            new Thread(){
-                public void run(){
-                    while(Arrancar.isSelected()){
-                        gestor.llamadaFiltros(EstadoMotor.APAGADO);
-                    }
-                }
-            }.start();
         }
         else{
             this.estado.setText("APAGADO");
@@ -219,14 +226,28 @@ public class GUISalpicadero extends javax.swing.JFrame {
             this.Freno.setText("FRENAR");
             this.Freno.setForeground(Color.BLACK);
             
-            new Thread(){
+        }
+        
+        new Thread(){
                 public void run(){
                     while(Arrancar.isSelected()){
-                        gestor.llamadaFiltros(EstadoMotor.ENCENDIDO);
+                        gestor.llamadaFiltros(EstadoMotor.CONSTANTE);
+                        
+                        double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
+                        Velocidad.setText(String.valueOf(velocidad));
+                        Velocidad.repaint();
+                        
+                        double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
+                        Revoluciones.setText(String.valueOf(revoluciones));
+                        Revoluciones.repaint();
+                        
+                        double distancia = Math.round(cKilometros.getDistancia()*100.0)/100.0;
+                        Distancia.setText(String.valueOf(distancia));
+                        Distancia.repaint();
                     }
                 }
             }.start();
-        }
+        
     }//GEN-LAST:event_ArrancarActionPerformed
 
     private void AceleradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceleradorActionPerformed
@@ -238,15 +259,15 @@ public class GUISalpicadero extends javax.swing.JFrame {
                         Acelerador.setForeground(Color.RED);
                         gestor.llamadaFiltros(EstadoMotor.ACELERANDO);
                         
-                        double velocidad = Math.round(gestor.salpicadero.getVelocidad()* 100.0)/100.0;
+                        double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
                         Velocidad.setText(String.valueOf(velocidad));
                         Velocidad.repaint();
                         
-                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones()*100.0)/100.0;
+                        double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
                         Revoluciones.setText(String.valueOf(revoluciones));
                         Revoluciones.repaint();
                         
-                        double distancia = Math.round(gestor.salpicadero.getDistancia()*100.0)/100.0;
+                        double distancia = Math.round(cKilometros.getDistancia()*100.0)/100.0;
                         Distancia.setText(String.valueOf(distancia));
                         Distancia.repaint();
                         
@@ -277,15 +298,15 @@ public class GUISalpicadero extends javax.swing.JFrame {
                         
                         gestor.llamadaFiltros(EstadoMotor.FRENANDO);
                         
-                        double velocidad = Math.round(gestor.salpicadero.getVelocidad()* 100.0)/100.0;
+                        double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
                         Velocidad.setText(String.valueOf(velocidad));
                         Velocidad.repaint();
                         
-                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones()*100.0)/100.0;
+                        double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
                         Revoluciones.setText(String.valueOf(revoluciones));
                         Revoluciones.repaint();
                         
-                        double distancia = Math.round(gestor.salpicadero.getDistancia()*100.0)/100.0;
+                        double distancia = Math.round(cKilometros.getDistancia()*100.0)/100.0;
                         Distancia.setText(String.valueOf(distancia));
                         Distancia.repaint();
                         
@@ -308,6 +329,67 @@ public class GUISalpicadero extends javax.swing.JFrame {
 
     
     
+    
+    public void ejecutar(double revoluciones, EstadoMotor estadoMotor){
+        
+        switch(estadoMotor){
+            case ACELERANDO:
+                this.tanterior = this.tactual;
+                this.tactual = System.currentTimeMillis();
+                this.cRevoluciones.setRevoluciones(revoluciones);
+                this.velocimetro.setVelocidad(2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
+                this.cKilometros.setDistancia(this.velocimetro.getVelocidad() * (this.tactual - this.tanterior)/3600000);
+                
+            case FRENANDO:
+                this.tanterior = this.tactual;
+                this.tactual = System.currentTimeMillis();
+                this.cRevoluciones.setRevoluciones(revoluciones);
+
+                this.velocimetro.setVelocidad((-1) * 2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
+                this.cKilometros.setDistancia(this.velocimetro.getVelocidad() * (this.tactual-this.tanterior)/3600000);
+                
+            case CONSTANTE:
+                this.tanterior = this.tactual;
+                this.tactual = System.currentTimeMillis();
+                this.cRevoluciones.setRevoluciones(revoluciones);
+                this.velocimetro.setVelocidad(2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
+                this.cKilometros.setDistancia(this.velocimetro.getVelocidad() * (this.tactual - this.tanterior)/3600000);
+                
+            default:
+                this.tactual = System.currentTimeMillis();
+        };
+    }
+    
+    
+    public double getVelocidad(){
+        return this.velocimetro.getVelocidad();
+    }
+    
+    public double getDistancia(){
+        return this.cKilometros.getDistancia();
+    }
+    
+    public double getRevoluciones(){
+        return this.cRevoluciones.getRevoluciones();
+    }
+    
+    public void setVelocidad(double v){
+        this.velocimetro.setVelocidad(v);
+    }
+    
+    public void setDistancia(double d){
+        this.cKilometros.setDistancia(d);
+    }
+    
+    public void setRevoluciones(double r){
+        this.cRevoluciones.setRevoluciones(r);
+    }
+    
+    public long getSimulacion(){
+        return this.tactual - this.tanterior;
+    }
+    
+    
     private void cerrarVentana(java.awt.event.WindowEvent evt){
         this.addWindowListener (new WindowAdapter(){
             @Override
@@ -317,8 +399,6 @@ public class GUISalpicadero extends javax.swing.JFrame {
         });
         
     }
-    
-    
     
     /**
      * @param args the command line arguments

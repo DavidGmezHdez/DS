@@ -11,7 +11,6 @@ public class CuentaKilometros {
     }
     
     public void setDistancia(double d){
-        if(d>=0)
-            this.distancia += d;
+        this.distancia += d;
     }
 }

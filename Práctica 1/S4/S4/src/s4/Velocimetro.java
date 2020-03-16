@@ -11,8 +11,9 @@ public class Velocimetro {
     }
     
     public void setVelocidad(double v){
-        if(v>=0)
-            velocidad = v;
+        velocidad = v;
+        if(velocidad < 0 )
+            velocidad = 0;
     }
     
 }

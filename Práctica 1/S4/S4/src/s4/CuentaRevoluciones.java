@@ -11,7 +11,8 @@ public class CuentaRevoluciones {
     }
     
     public void setRevoluciones(double r){
-        if(r>=0)
-            this.revoluciones = r;
+        this.revoluciones = r;
+        if(revoluciones < 0)
+            revoluciones = 0;
     }
 }

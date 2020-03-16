@@ -12,7 +12,7 @@ public class CadenaFiltros {
         filtros.add(new FiltroRepercutirRozamiento());
     }
     
-    double ejecutar(double revoluciones, EstadoMotor estadoMotor){
+    public double ejecutar(double revoluciones, EstadoMotor estadoMotor){
         for(Filtro f: filtros){
             revoluciones = f.ejecturar(revoluciones, estadoMotor);
         }
