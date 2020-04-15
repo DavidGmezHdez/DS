@@ -2,9 +2,9 @@ package s4;
 
 public class GestorFiltros extends Thread {
     public CadenaFiltros cadena;
-    public GUISalpicadero salpicadero;
+    public Salpicadero salpicadero;
     
-    GestorFiltros(GUISalpicadero salp){
+    GestorFiltros(Salpicadero salp){
         this.cadena =  new CadenaFiltros();
         this.salpicadero = salp;
     }

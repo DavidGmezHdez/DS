@@ -15,11 +15,9 @@ public class GUISalpicadero extends javax.swing.JFrame {
     
     long tinicio = 0, tactual = 0, tanterior = 0;
     private final double radio = 0.15;
-    /**
-     * Creates new form GUISalpicadero
-     */
+
     public GUISalpicadero() {
-        this.gestor = new GestorFiltros(this);
+        
         this.cKilometros = new CuentaKilometros();
         this.velocimetro = new Velocimetro();
         this.cRevoluciones = new CuentaRevoluciones();

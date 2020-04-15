@@ -13,8 +13,8 @@ public class CadenaFiltros {
     }
     
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor){
-        for(Filtro f: filtros){
-            revoluciones = f.ejecturar(revoluciones, estadoMotor);
+        for(int i=0;i<filtros.size();i++){
+            revoluciones = filtros.get(i).ejecturar(revoluciones, estadoMotor);
         }
         return revoluciones;
     }
