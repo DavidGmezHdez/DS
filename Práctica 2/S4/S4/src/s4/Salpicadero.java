@@ -30,9 +30,9 @@ public class Salpicadero extends javax.swing.JPanel {
         this.Acelerador.setEnabled(false);
         this.Freno.setEnabled(false);
         
-        this.Velocidad.setText(String.valueOf(0.0));
-        this.Revoluciones.setText(String.valueOf(0.0));
-        this.Distancia.setText(String.valueOf(0.0));
+        this.cuentaKilometrosRadial.setValue(0.0);
+        CuentaRevolucionesRadial.setValue(0.0);
+
         
     }
     
@@ -101,31 +101,16 @@ public class Salpicadero extends javax.swing.JPanel {
     private void initComponents() {
 
         Salpicadero = new javax.swing.JLabel();
-        Velocimetro = new javax.swing.JLabel();
-        Velocidad = new javax.swing.JTextField();
-        Cuentakilómetros = new javax.swing.JLabel();
-        Distancia = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        Revoluciones = new javax.swing.JTextField();
         Mandos = new javax.swing.JLabel();
         Arrancar = new javax.swing.JToggleButton();
         Acelerador = new javax.swing.JToggleButton();
         Freno = new javax.swing.JToggleButton();
         estado = new javax.swing.JLabel();
+        cuentaKilometrosRadial = new eu.hansolo.steelseries.gauges.Radial3Lcd();
+        radial1Square1 = new eu.hansolo.steelseries.gauges.Radial1Square();
+        CuentaRevolucionesRadial = new eu.hansolo.steelseries.gauges.Radial3Lcd();
 
         Salpicadero.setText("Salpicadero");
-
-        Velocimetro.setText("Velocímetro");
-
-        Velocidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VelocidadActionPerformed(evt);
-            }
-        });
-
-        Cuentakilómetros.setText("Cuentakilómetros");
-
-        jLabel1.setText("Cuentarevoluciones");
 
         Mandos.setText("Mandos");
 
@@ -152,79 +137,82 @@ public class Salpicadero extends javax.swing.JPanel {
 
         estado.setText("Estado");
 
+        cuentaKilometrosRadial.setBackgroundColor(eu.hansolo.steelseries.tools.BackgroundColor.RED);
+        cuentaKilometrosRadial.setTitle("Velocímetro");
+        cuentaKilometrosRadial.setUnitString("km/h");
+
+        radial1Square1.setBackgroundColor(eu.hansolo.steelseries.tools.BackgroundColor.RED);
+        radial1Square1.setTitle("Gasolina");
+        radial1Square1.setUnitString("Litros");
+
+        CuentaRevolucionesRadial.setBackgroundColor(eu.hansolo.steelseries.tools.BackgroundColor.RED);
+        CuentaRevolucionesRadial.setMaxValue(5000.0);
+        CuentaRevolucionesRadial.setTitle("CuentaRevoluciones");
+        CuentaRevolucionesRadial.setUnitString("RPM");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Revoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(Salpicadero))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(82, 82, 82)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Velocimetro)
-                                .addComponent(Cuentakilómetros)
-                                .addComponent(jLabel1)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(93, 93, 93)
-                            .addComponent(Distancia, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Velocidad, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                .addGap(59, 59, 59)
+                .addComponent(Salpicadero)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 440, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Mandos)
                         .addGap(304, 304, 304))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(estado)
+                        .addGap(226, 226, 226))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(cuentaKilometrosRadial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radial1Square1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Arrancar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Acelerador, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Freno, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(estado)
-                        .addGap(226, 226, 226))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CuentaRevolucionesRadial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Arrancar)
+                                    .addComponent(Acelerador)
+                                    .addComponent(Freno))
+                                .addGap(89, 89, 89)
+                                .addComponent(CuentaRevolucionesRadial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(radial1Square1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Salpicadero)
                             .addComponent(Mandos))
-                        .addGap(28, 28, 28)
-                        .addComponent(Velocimetro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Velocidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Arrancar)
-                            .addComponent(Acelerador)
-                            .addComponent(Freno))))
-                .addGap(28, 28, 28)
-                .addComponent(Cuentakilómetros)
-                .addGap(18, 18, 18)
-                .addComponent(Distancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(Revoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+                        .addGap(151, 151, 151)
+                        .addComponent(cuentaKilometrosRadial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void VelocidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VelocidadActionPerformed
-
-    }//GEN-LAST:event_VelocidadActionPerformed
 
     private void ArrancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArrancarActionPerformed
         if(this.Arrancar.isSelected()){
@@ -264,19 +252,17 @@ public class Salpicadero extends javax.swing.JPanel {
         new Thread(){
             public void run(){
                 while(Arrancar.isSelected()){
-                    gestor.llamadaFiltros(EstadoMotor.CONSTANTE);
+                    gestor.llamadaFiltros(EstadoMotor.ENCENDIDO);
 
                     double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
-                    Velocidad.setText(String.valueOf(velocidad));
-                    Velocidad.repaint();
+                    cuentaKilometrosRadial.setValue(velocidad);
+                    cuentaKilometrosRadial.repaint();
 
                     double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
-                    Revoluciones.setText(String.valueOf(revoluciones));
-                    Revoluciones.repaint();
+                    CuentaRevolucionesRadial.setValue(revoluciones);
+                    CuentaRevolucionesRadial.repaint();
 
                     double distancia = Math.round(cKilometros.getDistancia()*100.0)/100.0;
-                    Distancia.setText(String.valueOf(distancia));
-                    Distancia.repaint();
                 }
             }
         }.start();
@@ -293,16 +279,15 @@ public class Salpicadero extends javax.swing.JPanel {
                     gestor.llamadaFiltros(EstadoMotor.ACELERANDO);
 
                     double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
-                    Velocidad.setText(String.valueOf(velocidad));
-                    Velocidad.repaint();
+                    cuentaKilometrosRadial.setValue(velocidad);
+                    cuentaKilometrosRadial.repaint();
 
                     double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
-                    Revoluciones.setText(String.valueOf(revoluciones));
-                    Revoluciones.repaint();
+                    CuentaRevolucionesRadial.setValue(revoluciones);
+                    CuentaRevolucionesRadial.repaint();
 
                     double distancia = Math.round(cKilometros.getDistancia()*100.0)/100.0;
-                    Distancia.setText(String.valueOf(distancia));
-                    Distancia.repaint();
+
 
                     try{
                         Thread.sleep(1000);
@@ -331,16 +316,15 @@ public class Salpicadero extends javax.swing.JPanel {
                     gestor.llamadaFiltros(EstadoMotor.FRENANDO);
 
                     double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
-                    Velocidad.setText(String.valueOf(velocidad));
-                    Velocidad.repaint();
+                    cuentaKilometrosRadial.setValue(velocidad);
+                    cuentaKilometrosRadial.repaint();
 
                     double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
-                    Revoluciones.setText(String.valueOf(revoluciones));
-                    Revoluciones.repaint();
+                    CuentaRevolucionesRadial.setValue(revoluciones);
+                    CuentaRevolucionesRadial.repaint();
 
                     double distancia = Math.round(cKilometros.getDistancia()*100.0)/100.0;
-                    Distancia.setText(String.valueOf(distancia));
-                    Distancia.repaint();
+
 
                     try{
                         Thread.sleep(1000);
@@ -363,15 +347,12 @@ public class Salpicadero extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Acelerador;
     private javax.swing.JToggleButton Arrancar;
-    private javax.swing.JLabel Cuentakilómetros;
-    private javax.swing.JTextField Distancia;
+    private eu.hansolo.steelseries.gauges.Radial3Lcd CuentaRevolucionesRadial;
     private javax.swing.JToggleButton Freno;
     private javax.swing.JLabel Mandos;
-    private javax.swing.JTextField Revoluciones;
     private javax.swing.JLabel Salpicadero;
-    private javax.swing.JTextField Velocidad;
-    private javax.swing.JLabel Velocimetro;
+    private eu.hansolo.steelseries.gauges.Radial3Lcd cuentaKilometrosRadial;
     private javax.swing.JLabel estado;
-    private javax.swing.JLabel jLabel1;
+    private eu.hansolo.steelseries.gauges.Radial1Square radial1Square1;
     // End of variables declaration//GEN-END:variables
 }

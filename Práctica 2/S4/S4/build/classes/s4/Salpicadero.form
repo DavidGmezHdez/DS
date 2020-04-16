@@ -16,42 +16,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="Revoluciones" min="-2" pref="143" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="Salpicadero" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Velocimetro" min="-2" max="-2" attributes="0"/>
-                              <Component id="Cuentakilómetros" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="Distancia" min="-2" pref="141" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="Velocidad" alignment="1" min="-2" pref="138" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="247" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Component id="Salpicadero" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="440" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="Mandos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="Arrancar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Acelerador" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="Freno" min="-2" pref="95" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="estado" min="-2" max="-2" attributes="0"/>
@@ -59,43 +31,65 @@
                   </Group>
               </Group>
           </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="cuentaKilometrosRadial" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="radial1Square1" min="-2" pref="169" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="Arrancar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="Acelerador" min="-2" pref="157" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="Freno" min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="CuentaRevolucionesRadial" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="estado" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="Arrancar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Acelerador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Freno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                              <Component id="CuentaRevolucionesRadial" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="radial1Square1" min="-2" pref="171" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Salpicadero" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Mandos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="Velocimetro" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="Velocidad" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="estado" min="-2" pref="24" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Arrancar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Acelerador" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Freno" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                      <Component id="cuentaKilometrosRadial" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="Cuentakilómetros" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="Distancia" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="Revoluciones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="269" max="32767" attributes="0"/>
+              <EmptySpace pref="152" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -105,30 +99,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salpicadero"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Velocimetro">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Veloc&#xed;metro"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Velocidad">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VelocidadActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Cuentakil&#xf3;metros">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cuentakil&#xf3;metros"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Distancia">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cuentarevoluciones"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Revoluciones">
     </Component>
     <Component class="javax.swing.JLabel" name="Mandos">
       <Properties>
@@ -162,6 +132,38 @@
     <Component class="javax.swing.JLabel" name="estado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estado"/>
+      </Properties>
+    </Component>
+    <Component class="eu.hansolo.steelseries.gauges.Radial3Lcd" name="cuentaKilometrosRadial">
+      <Properties>
+        <Property name="backgroundColor" type="eu.hansolo.steelseries.tools.BackgroundColor" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="RED"/>
+        </Property>
+        <Property name="title" type="java.lang.String" value="Veloc&#xed;metro"/>
+        <Property name="unitString" type="java.lang.String" value="km/h"/>
+      </Properties>
+    </Component>
+    <Container class="eu.hansolo.steelseries.gauges.Radial1Square" name="radial1Square1">
+      <Properties>
+        <Property name="backgroundColor" type="eu.hansolo.steelseries.tools.BackgroundColor" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="RED"/>
+        </Property>
+        <Property name="title" type="java.lang.String" value="Gasolina"/>
+        <Property name="unitString" type="java.lang.String" value="Litros"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+    </Container>
+    <Component class="eu.hansolo.steelseries.gauges.Radial3Lcd" name="CuentaRevolucionesRadial">
+      <Properties>
+        <Property name="backgroundColor" type="eu.hansolo.steelseries.tools.BackgroundColor" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="RED"/>
+        </Property>
+        <Property name="maxValue" type="double" value="5000.0"/>
+        <Property name="title" type="java.lang.String" value="CuentaRevoluciones"/>
+        <Property name="unitString" type="java.lang.String" value="RPM"/>
       </Properties>
     </Component>
   </SubComponents>

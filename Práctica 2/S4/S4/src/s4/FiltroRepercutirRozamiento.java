@@ -4,10 +4,13 @@ public class FiltroRepercutirRozamiento implements Filtro {
     
     @Override
     public double ejecturar(double revoluciones,EstadoMotor estadoMotor){
-        if(estadoMotor == EstadoMotor.ACELERANDO && revoluciones > 0)
-            return revoluciones -= revoluciones*0.02; //2% de rozamiento
-        else
-            return revoluciones;
+        double revol = revoluciones;
+        if((estadoMotor == EstadoMotor.ENCENDIDO) && revoluciones > 0)
+            revol -= revol*0.5;
+        if(revol < 1)
+            revol = 0;
+        
+        return revol;
     }
     
 }
