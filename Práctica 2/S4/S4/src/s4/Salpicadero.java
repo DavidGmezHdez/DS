@@ -52,10 +52,10 @@ public class Salpicadero extends javax.swing.JPanel {
     }
     
     public void ejecutar(double revoluciones, EstadoMotor estadoMotor){
-        System.out.println(estadoMotor);
+        System.out.println("El coche esta " + estadoMotor);
         //System.out.println("La velocidad es de " + this.velocimetro.getVelocidad());
         //System.out.println(this.velocimetro.getVelocidadAlmacenada());
-        //System.out.println("Las revoluciones son" + this.cRevoluciones.getRevoluciones());
+        //System.out.println("Las revoluciones 1 son" + this.cRevoluciones.getRevoluciones());
         //System.out.println("Las revoluciones para el cambio de aceite son: " +this.cRevoluciones.getCambioAceite());
         //System.out.println("Las revoluciones para el cambio de frenos son: " +this.cRevoluciones.getCambioFrenos());
         //System.out.println("Las revoluciones para la revision general son: " +this.cRevoluciones.getRevisionGeneral());
@@ -65,15 +65,15 @@ public class Salpicadero extends javax.swing.JPanel {
         double cambioFrenos = Math.pow(10, 8);
         double revisionGeneral = Math.pow(10, 9);
         
-        if(this.cRevoluciones.getCambioAceite() > 1000){
+        if(this.cRevoluciones.getCambioAceite() > cambioAceite){
             //System.out.println("cambia el aceite");
             this.AvisoAceite.setText("¡Deberias cambiar el aceite!");
         }
-        if(this.cRevoluciones.getCambioFrenos() > 2000){
+        if(this.cRevoluciones.getCambioFrenos() > cambioFrenos){
             //System.out.println("cambia los frenos");
             this.AvisoFrenos.setText("¡Deberias cambiar las pastillas de frenos!");
         }
-        if(this.cRevoluciones.getRevisionGeneral() > 3000){
+        if(this.cRevoluciones.getRevisionGeneral() > revisionGeneral){
             //System.out.println("revisa el coche");
             this.AvisoGeneral.setText("¡Deberias hacer una revisión general!");
         }
@@ -83,27 +83,34 @@ public class Salpicadero extends javax.swing.JPanel {
         this.cRevoluciones.setRevoluciones(revoluciones);
         this.cRevoluciones.setRevolucionesAlmacenada(this.cRevoluciones.getRevoluciones());
         
+        double velocidad = 2 * Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0));
         
         switch(estadoMotor){
             
             case ACELERANDO:
-                this.velocimetro.setVelocidad(2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
+                this.velocimetro.setVelocidad(velocidad);
+                break;
              
             case ANDANDO:
-                this.velocimetro.setVelocidad((-1) * 2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*0.5*((double)(60.0/1000.0)));
-                               
+                this.velocimetro.setVelocidad(velocidad);
+                break;
+
             case FRENANDO:
-                this.velocimetro.setVelocidad((-1) * 2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
-                
+                this.velocimetro.setVelocidad(velocidad);
+                break;
+
             case CONSTANTE:
-                this.velocimetro.setVelocidad(2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
-                
+                this.velocimetro.setVelocidad(velocidad);
+                break;
+
             default:
                 this.tactual = System.currentTimeMillis();
-        };
-        
+                     
+        }
         this.cKilometros.setDistancia(this.velocimetro.getVelocidad() * (this.tactual - this.tanterior)/3600000);
+        
         this.gasolina = this.gasolina - (this.cRevoluciones.getRevoluciones() * this.cRevoluciones.getRevoluciones() * 5 * Math.pow(10, -10));
+        //System.out.println("La gasolina total es: " + this.gasolina);
     }
     
     
@@ -184,7 +191,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 AceleradorActionPerformed(evt);
             }
         });
-        add(Acelerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 157, -1));
+        add(Acelerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 157, -1));
 
         Freno.setText("FRENO");
         Freno.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +226,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 MantenerSCACVActionPerformed(evt);
             }
         });
-        add(MantenerSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
+        add(MantenerSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
 
         ReiniciarSCACV.setText("Reiniciar");
         ReiniciarSCACV.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +234,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 ReiniciarSCACVActionPerformed(evt);
             }
         });
-        add(ReiniciarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, -1, -1));
+        add(ReiniciarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, -1, -1));
 
         ApagarSCACV.setText("Parar");
         ApagarSCACV.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +242,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 ApagarSCACVActionPerformed(evt);
             }
         });
-        add(ApagarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, -1, -1));
+        add(ApagarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
 
         estadoVehiculo.setText("Vehiculo");
         add(estadoVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 118, -1, -1));
@@ -341,18 +348,16 @@ public class Salpicadero extends javax.swing.JPanel {
         new Thread(){
             public void run(){
                 while(Arrancar.isSelected()){
-                    
-                    //AQUI ES DONDE ESTA EL FALLO
-                    //Si pones el estado FRENANDO si funciona y baja la velocidad cuando apagas el coche
-                    //pero si pones ANDANDO no hace nada(pero estan definidos igual en la linea 94
+                   
                     if(!Acelerador.isSelected() && !Freno.isSelected() && !MantenerSCACV.isSelected() && !ReiniciarSCACV.isSelected() && !ApagarSCACV.isSelected()){
+                        
                         gestor.llamadaFiltros(EstadoMotor.ANDANDO);
 
                         double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
+                        
                         cuentaKilometrosRadial.setValue(velocidad);
                         cuentaKilometrosRadial.repaint();
 
-                        System.out.println("La velocidad andando es de " + velocidad);
 
                         double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
                         CuentaRevolucionesRadial.setValue(revoluciones);
@@ -360,10 +365,11 @@ public class Salpicadero extends javax.swing.JPanel {
 
                         Gasolina.setValue(gasolina);
                         Gasolina.repaint();
+                        
                     }
 
                     try{
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     }catch (InterruptedException ex){
                         Logger.getLogger(Salpicadero.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -441,6 +447,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 
                 if(!Acelerador.isSelected() && Arrancar.isSelected()){
                     Freno.setEnabled(true);
+                    //gestor.llamadaFiltros(EstadoMotor.ANDANDO);
                     Acelerador.setText("ACELERAR");
                     Acelerador.setForeground(Color.BLACK);
                 }
@@ -521,6 +528,7 @@ public class Salpicadero extends javax.swing.JPanel {
 
                 if(!Freno.isSelected() && Arrancar.isSelected()){
                     Acelerador.setEnabled(true);
+                    //gestor.llamadaFiltros(EstadoMotor.ANDANDO);
                     Freno.setText("FRENAR");
                     Freno.setForeground(Color.BLACK);
                 }
@@ -538,13 +546,22 @@ public class Salpicadero extends javax.swing.JPanel {
                     Acelerador.setEnabled(false);
                     gestor.llamadaFiltros(EstadoMotor.CONSTANTE);
 
+                    velalmacenada = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
+                    VelocidadAlmacenada.setText(Double.toString(velalmacenada));
+                    velocimetro.setVelocidadAlmacenada(velalmacenada);
                     
-
+                    cuentaKilometrosRadial.setValue(velalmacenada);
+                    cuentaKilometrosRadial.repaint();
+                    
+                    System.out.println("La velocidad almacenada es de: " + velalmacenada);
+                    /*
                     double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
                     VelocidadAlmacenada.setText(Double.toString(velocidad));
                     velocimetro.setVelocidadAlmacenada(velocidad);
+                    
                     cuentaKilometrosRadial.setValue(velocidad);
                     cuentaKilometrosRadial.repaint();
+                    */
 
                     double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
                     cRevoluciones.setRevolucionesAlmacenada(revoluciones);
@@ -582,24 +599,29 @@ public class Salpicadero extends javax.swing.JPanel {
         new Thread(){
             public void run(){
                 while(Arrancar.isSelected() && ReiniciarSCACV.isSelected()){
+                    
+                    System.out.println("La velocidad que se va a pones es: " + velalmacenada);
                    
-                    if(velocimetro.getVelocidad() < velocimetro.getVelocidadAlmacenada()){
+                    if(velocimetro.getVelocidad() < velalmacenada){
                         Acelerador.setSelected(false);
                         Acelerador.setEnabled(false);
                         gestor.llamadaFiltros(EstadoMotor.ACELERANDO);
                     }
-                    else if (velocimetro.getVelocidad() > velocimetro.getVelocidadAlmacenada()){
+                    else if (velocimetro.getVelocidad() > velalmacenada){
                         Acelerador.setSelected(false);
                         Acelerador.setEnabled(false);
                         gestor.llamadaFiltros(EstadoMotor.FRENANDO);
                     }
-                    else if (velocimetro.getVelocidad() == velocimetro.getVelocidadAlmacenada()){
+                    else if (velocimetro.getVelocidad() == velalmacenada){
                         gestor.llamadaFiltros(EstadoMotor.CONSTANTE);
                         Acelerador.setEnabled(true);
                         MantenerSCACV.setSelected(true);
                     }
                     
                     double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
+                    if( velocidad < velalmacenada+7 && velocidad > velalmacenada-7){
+                        velocidad = velalmacenada;
+                    }
                     cuentaKilometrosRadial.setValue(velocidad);
                     cuentaKilometrosRadial.repaint();
 

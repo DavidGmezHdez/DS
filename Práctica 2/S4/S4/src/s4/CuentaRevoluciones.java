@@ -1,7 +1,6 @@
 package s4;
 public class CuentaRevoluciones {
     private double revoluciones;
-    private double revolucionesAlmacenada;
     private double cambioAceite;
     private double cambioFrenos;
     private double revisionGeneral;
@@ -9,7 +8,6 @@ public class CuentaRevoluciones {
     
     CuentaRevoluciones(){
         revoluciones = 0;
-        revolucionesAlmacenada = 0;
     }
     
     public double getRevoluciones(){
