@@ -29,6 +29,11 @@ public class Salpicadero extends javax.swing.JPanel {
         
         initComponents();
         
+        this.FlechaApuntadoraAcelerar.setVisible(false);
+        this.FlechaApuntadoraMantener.setVisible(false);
+        this.FlechaApuntadoraReiniciar.setVisible(false);
+        this.FlechaApuntadoraParar.setVisible(false);
+        
         this.estadoMotor.setText("APAGADO");
         this.estadoMotor.setForeground(Color.RED);
         this.Arrancar.setForeground(Color.GREEN);
@@ -166,8 +171,12 @@ public class Salpicadero extends javax.swing.JPanel {
         AvisoAceite = new javax.swing.JLabel();
         AvisoFrenos = new javax.swing.JLabel();
         AvisoGeneral = new javax.swing.JLabel();
-        VelocidadAlmacenada = new javax.swing.JTextField();
         LabbelVelocidadAlmacenada = new javax.swing.JLabel();
+        VelocidadDisplay = new eu.hansolo.steelseries.gauges.DisplayCircular();
+        FlechaApuntadoraAcelerar = new javax.swing.JLabel();
+        FlechaApuntadoraReiniciar = new javax.swing.JLabel();
+        FlechaApuntadoraMantener = new javax.swing.JLabel();
+        FlechaApuntadoraParar = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -191,7 +200,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 AceleradorActionPerformed(evt);
             }
         });
-        add(Acelerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 157, -1));
+        add(Acelerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 157, -1));
 
         Freno.setText("FRENO");
         Freno.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +235,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 MantenerSCACVActionPerformed(evt);
             }
         });
-        add(MantenerSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
+        add(MantenerSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 340, -1, -1));
 
         ReiniciarSCACV.setText("Reiniciar");
         ReiniciarSCACV.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +243,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 ReiniciarSCACVActionPerformed(evt);
             }
         });
-        add(ReiniciarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, -1, -1));
+        add(ReiniciarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, -1, -1));
 
         ApagarSCACV.setText("Parar");
         ApagarSCACV.addActionListener(new java.awt.event.ActionListener() {
@@ -242,7 +251,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 ApagarSCACVActionPerformed(evt);
             }
         });
-        add(ApagarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
+        add(ApagarSCACV, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, -1, -1));
 
         estadoVehiculo.setText("Vehiculo");
         add(estadoVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 118, -1, -1));
@@ -274,16 +283,23 @@ public class Salpicadero extends javax.swing.JPanel {
         add(AvisoFrenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, -1, -1));
         add(AvisoGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, -1, -1));
 
-        VelocidadAlmacenada.setText("0.0");
-        VelocidadAlmacenada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VelocidadAlmacenadaActionPerformed(evt);
-            }
-        });
-        add(VelocidadAlmacenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
-
         LabbelVelocidadAlmacenada.setText("Velocidad Almacenada");
-        add(LabbelVelocidadAlmacenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        add(LabbelVelocidadAlmacenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        VelocidadDisplay.setUnitString("km/h");
+        add(VelocidadDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+
+        FlechaApuntadoraAcelerar.setText("---->");
+        add(FlechaApuntadoraAcelerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, -1, 30));
+
+        FlechaApuntadoraReiniciar.setText("---->");
+        add(FlechaApuntadoraReiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, -1, 30));
+
+        FlechaApuntadoraMantener.setText("---->");
+        add(FlechaApuntadoraMantener, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, -1, 30));
+
+        FlechaApuntadoraParar.setText("<----");
+        add(FlechaApuntadoraParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ArrancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArrancarActionPerformed
@@ -291,6 +307,7 @@ public class Salpicadero extends javax.swing.JPanel {
             if(this.gestor.getState() == Thread.State.RUNNABLE)
                 this.gestor.start();
 
+            
             this.estadoMotor.setText("ENCENDIDO");
             this.estadoMotor.setForeground(Color.GREEN);
 
@@ -332,6 +349,11 @@ public class Salpicadero extends javax.swing.JPanel {
             this.Freno.setText("FRENAR");
             this.Freno.setForeground(Color.BLACK);
             
+            this.FlechaApuntadoraAcelerar.setVisible(false);
+            this.FlechaApuntadoraMantener.setVisible(false);
+            this.FlechaApuntadoraReiniciar.setVisible(false);
+            this.FlechaApuntadoraParar.setVisible(false);
+            
             if(this.velocimetro.getVelocidad()==0){
                 if(this.cRevoluciones.getCambioAceite() > 0){
                     this.CambioAceite.setEnabled(true);
@@ -349,7 +371,7 @@ public class Salpicadero extends javax.swing.JPanel {
             public void run(){
                 while(Arrancar.isSelected()){
                    
-                    if(!Acelerador.isSelected() && !Freno.isSelected() && !MantenerSCACV.isSelected() && !ReiniciarSCACV.isSelected() && !ApagarSCACV.isSelected()){
+                    if(!Acelerador.isSelected() && !Freno.isSelected() && !MantenerSCACV.isSelected() && !ReiniciarSCACV.isSelected()){
                         
                         gestor.llamadaFiltros(EstadoMotor.ANDANDO);
 
@@ -408,6 +430,7 @@ public class Salpicadero extends javax.swing.JPanel {
         new Thread(){
             public void run(){
                 while(Arrancar.isSelected() && Acelerador.isSelected()){
+                    FlechaApuntadoraAcelerar.setVisible(true);
                     Freno.setEnabled(false);
                     Acelerador.setText("Soltar Acelerador");
                     Acelerador.setForeground(Color.RED);
@@ -450,6 +473,7 @@ public class Salpicadero extends javax.swing.JPanel {
                     //gestor.llamadaFiltros(EstadoMotor.ANDANDO);
                     Acelerador.setText("ACELERAR");
                     Acelerador.setForeground(Color.BLACK);
+                    FlechaApuntadoraAcelerar.setVisible(false);
                 }
                 
                 /*
@@ -540,14 +564,14 @@ public class Salpicadero extends javax.swing.JPanel {
     private void MantenerSCACVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenerSCACVActionPerformed
         new Thread(){
             public void run(){
-                while(Arrancar.isSelected() && MantenerSCACV.isSelected()){
-                   
+                while(Arrancar.isSelected() && MantenerSCACV.isSelected() && !ApagarSCACV.isSelected()){
+                    FlechaApuntadoraMantener.setVisible(true);
                     Acelerador.setSelected(false);
                     Acelerador.setEnabled(false);
                     gestor.llamadaFiltros(EstadoMotor.CONSTANTE);
 
                     velalmacenada = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
-                    VelocidadAlmacenada.setText(Double.toString(velalmacenada));
+                    VelocidadDisplay.setValue(velalmacenada);
                     velocimetro.setVelocidadAlmacenada(velalmacenada);
                     
                     cuentaKilometrosRadial.setValue(velalmacenada);
@@ -587,6 +611,7 @@ public class Salpicadero extends javax.swing.JPanel {
                     Acelerador.setEnabled(true);
                     Acelerador.setText("ACELERAR");
                     Acelerador.setForeground(Color.BLACK);
+                    FlechaApuntadoraMantener.setVisible(false);
                 }
             }
         }.start();
@@ -598,10 +623,8 @@ public class Salpicadero extends javax.swing.JPanel {
     private void ReiniciarSCACVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReiniciarSCACVActionPerformed
         new Thread(){
             public void run(){
-                while(Arrancar.isSelected() && ReiniciarSCACV.isSelected()){
-                    
-                    System.out.println("La velocidad que se va a pones es: " + velalmacenada);
-                   
+                while(Arrancar.isSelected() && ReiniciarSCACV.isSelected() && !ApagarSCACV.isSelected()){
+                    FlechaApuntadoraReiniciar.setVisible(true);
                     if(velocimetro.getVelocidad() < velalmacenada){
                         Acelerador.setSelected(false);
                         Acelerador.setEnabled(false);
@@ -645,6 +668,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 
                 if(!ReiniciarSCACV.isSelected() && Arrancar.isSelected()){
                     Acelerador.setEnabled(true);
+                    FlechaApuntadoraReiniciar.setVisible(false);
                 }
 
             }
@@ -659,6 +683,7 @@ public class Salpicadero extends javax.swing.JPanel {
             public void run(){
                 while(Arrancar.isSelected() && ApagarSCACV.isSelected()){
                     
+                    FlechaApuntadoraParar.setVisible(true);
                     MantenerSCACV.setEnabled(false);
                     MantenerSCACV.setSelected(false);
                     ReiniciarSCACV.setSelected(false);
@@ -672,8 +697,9 @@ public class Salpicadero extends javax.swing.JPanel {
                     }
                 }
                 
-                if(!ReiniciarSCACV.isSelected() && Arrancar.isSelected()){
+                if(!ApagarSCACV.isSelected() && Arrancar.isSelected()){
                     Acelerador.setEnabled(true);
+                    FlechaApuntadoraParar.setVisible(false);
                 }
 
             }
@@ -699,10 +725,6 @@ public class Salpicadero extends javax.swing.JPanel {
         this.RevisionGeneral.setEnabled(false);
     }//GEN-LAST:event_RevisionGeneralActionPerformed
 
-    private void VelocidadAlmacenadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VelocidadAlmacenadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VelocidadAlmacenadaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Acelerador;
@@ -714,6 +736,10 @@ public class Salpicadero extends javax.swing.JPanel {
     private javax.swing.JButton CambioAceite;
     private javax.swing.JButton CambioFrenos;
     private eu.hansolo.steelseries.gauges.Radial3Lcd CuentaRevolucionesRadial;
+    private javax.swing.JLabel FlechaApuntadoraAcelerar;
+    private javax.swing.JLabel FlechaApuntadoraMantener;
+    private javax.swing.JLabel FlechaApuntadoraParar;
+    private javax.swing.JLabel FlechaApuntadoraReiniciar;
     private javax.swing.JToggleButton Freno;
     private eu.hansolo.steelseries.gauges.Radial1Square Gasolina;
     private javax.swing.JLabel LabbelVelocidadAlmacenada;
@@ -722,7 +748,7 @@ public class Salpicadero extends javax.swing.JPanel {
     private javax.swing.JToggleButton ReiniciarSCACV;
     private javax.swing.JButton RevisionGeneral;
     private javax.swing.JLabel Salpicadero;
-    private javax.swing.JTextField VelocidadAlmacenada;
+    private eu.hansolo.steelseries.gauges.DisplayCircular VelocidadDisplay;
     private eu.hansolo.steelseries.gauges.Radial3Lcd cuentaKilometrosRadial;
     private javax.swing.JLabel estadoMotor;
     private javax.swing.JLabel estadoVehiculo;
