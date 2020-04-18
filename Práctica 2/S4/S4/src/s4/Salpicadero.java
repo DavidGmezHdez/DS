@@ -52,7 +52,7 @@ public class Salpicadero extends javax.swing.JPanel {
     }
     
     public void ejecutar(double revoluciones, EstadoMotor estadoMotor){
-        //System.out.println(estadoMotor);
+        System.out.println(estadoMotor);
         //System.out.println("La velocidad es de " + this.velocimetro.getVelocidad());
         //System.out.println(this.velocimetro.getVelocidadAlmacenada());
         //System.out.println("Las revoluciones son" + this.cRevoluciones.getRevoluciones());
@@ -90,7 +90,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 this.velocimetro.setVelocidad(2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
              
             case ANDANDO:
-                this.velocimetro.setVelocidad((-1) * 2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
+                this.velocimetro.setVelocidad((-1) * 2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*0.5*((double)(60.0/1000.0)));
                                
             case FRENANDO:
                 this.velocimetro.setVelocidad((-1) * 2*Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
@@ -159,11 +159,13 @@ public class Salpicadero extends javax.swing.JPanel {
         AvisoAceite = new javax.swing.JLabel();
         AvisoFrenos = new javax.swing.JLabel();
         AvisoGeneral = new javax.swing.JLabel();
+        VelocidadAlmacenada = new javax.swing.JTextField();
+        LabbelVelocidadAlmacenada = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Salpicadero.setText("Salpicadero");
-        add(Salpicadero, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 115, -1, -1));
+        add(Salpicadero, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
         Mandos.setText("Mandos");
         add(Mandos, new org.netbeans.lib.awtextra.AbsoluteConstraints(621, 63, -1, -1));
@@ -264,6 +266,17 @@ public class Salpicadero extends javax.swing.JPanel {
         add(AvisoAceite, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
         add(AvisoFrenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, -1, -1));
         add(AvisoGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, -1, -1));
+
+        VelocidadAlmacenada.setText("0.0");
+        VelocidadAlmacenada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VelocidadAlmacenadaActionPerformed(evt);
+            }
+        });
+        add(VelocidadAlmacenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+
+        LabbelVelocidadAlmacenada.setText("Velocidad Almacenada");
+        add(LabbelVelocidadAlmacenada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ArrancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArrancarActionPerformed
@@ -327,26 +340,27 @@ public class Salpicadero extends javax.swing.JPanel {
             
         new Thread(){
             public void run(){
-                while(!Arrancar.isSelected()){
+                while(Arrancar.isSelected()){
                     
                     //AQUI ES DONDE ESTA EL FALLO
                     //Si pones el estado FRENANDO si funciona y baja la velocidad cuando apagas el coche
                     //pero si pones ANDANDO no hace nada(pero estan definidos igual en la linea 94
-                    gestor.llamadaFiltros(EstadoMotor.FRENANDO);
+                    if(!Acelerador.isSelected() && !Freno.isSelected() && !MantenerSCACV.isSelected() && !ReiniciarSCACV.isSelected() && !ApagarSCACV.isSelected()){
+                        gestor.llamadaFiltros(EstadoMotor.ANDANDO);
 
-                    double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
-                    cuentaKilometrosRadial.setValue(velocidad);
-                    cuentaKilometrosRadial.repaint();
-                    
-                    System.out.println("La velocidad andando es de " + velocidad);
+                        double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
+                        cuentaKilometrosRadial.setValue(velocidad);
+                        cuentaKilometrosRadial.repaint();
 
-                    double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
-                    CuentaRevolucionesRadial.setValue(revoluciones);
-                    CuentaRevolucionesRadial.repaint();
-                    
-                    Gasolina.setValue(gasolina);
-                    Gasolina.repaint();
+                        System.out.println("La velocidad andando es de " + velocidad);
 
+                        double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
+                        CuentaRevolucionesRadial.setValue(revoluciones);
+                        CuentaRevolucionesRadial.repaint();
+
+                        Gasolina.setValue(gasolina);
+                        Gasolina.repaint();
+                    }
 
                     try{
                         Thread.sleep(1000);
@@ -356,7 +370,7 @@ public class Salpicadero extends javax.swing.JPanel {
                 }
             }
         }.start();            
-
+        
         /*
         new Thread(){
             public void run(){
@@ -527,6 +541,7 @@ public class Salpicadero extends javax.swing.JPanel {
                     
 
                     double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
+                    VelocidadAlmacenada.setText(Double.toString(velocidad));
                     velocimetro.setVelocidadAlmacenada(velocidad);
                     cuentaKilometrosRadial.setValue(velocidad);
                     cuentaKilometrosRadial.repaint();
@@ -581,7 +596,17 @@ public class Salpicadero extends javax.swing.JPanel {
                     else if (velocimetro.getVelocidad() == velocimetro.getVelocidadAlmacenada()){
                         gestor.llamadaFiltros(EstadoMotor.CONSTANTE);
                         Acelerador.setEnabled(true);
+                        MantenerSCACV.setSelected(true);
                     }
+                    
+                    double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
+                    cuentaKilometrosRadial.setValue(velocidad);
+                    cuentaKilometrosRadial.repaint();
+
+                    double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
+                    CuentaRevolucionesRadial.setValue(revoluciones);
+                    CuentaRevolucionesRadial.repaint();
+
 
                     if(ReiniciarSCACV.isSelected() && Freno.isSelected())
                         ApagarSCACV.setSelected(true);
@@ -652,6 +677,10 @@ public class Salpicadero extends javax.swing.JPanel {
         this.RevisionGeneral.setEnabled(false);
     }//GEN-LAST:event_RevisionGeneralActionPerformed
 
+    private void VelocidadAlmacenadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VelocidadAlmacenadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VelocidadAlmacenadaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Acelerador;
@@ -665,11 +694,13 @@ public class Salpicadero extends javax.swing.JPanel {
     private eu.hansolo.steelseries.gauges.Radial3Lcd CuentaRevolucionesRadial;
     private javax.swing.JToggleButton Freno;
     private eu.hansolo.steelseries.gauges.Radial1Square Gasolina;
+    private javax.swing.JLabel LabbelVelocidadAlmacenada;
     private javax.swing.JLabel Mandos;
     private javax.swing.JToggleButton MantenerSCACV;
     private javax.swing.JToggleButton ReiniciarSCACV;
     private javax.swing.JButton RevisionGeneral;
     private javax.swing.JLabel Salpicadero;
+    private javax.swing.JTextField VelocidadAlmacenada;
     private eu.hansolo.steelseries.gauges.Radial3Lcd cuentaKilometrosRadial;
     private javax.swing.JLabel estadoMotor;
     private javax.swing.JLabel estadoVehiculo;
