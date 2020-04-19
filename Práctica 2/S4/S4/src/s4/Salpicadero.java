@@ -9,7 +9,6 @@ public class Salpicadero extends javax.swing.JPanel {
     protected CuentaKilometros cKilometros;
     protected Velocimetro velocimetro;
     protected CuentaRevoluciones cRevoluciones;
-    private EstadoVehiculo estadovehi;
     
     double vel = 0;
     double velalmacenada = 0;
@@ -80,7 +79,6 @@ public class Salpicadero extends javax.swing.JPanel {
         
         double velocidad = 2 * Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0));
         
-        System.out.println(2 * Math.PI*radio*this.cRevoluciones.getRevoluciones()*((double)(60.0/1000.0)));
         
         if(velocidad > 100)
             velocidad = 100;
@@ -420,7 +418,6 @@ public class Salpicadero extends javax.swing.JPanel {
 
 
                     double velocidad = Math.round(velocimetro.getVelocidad()* 100.0)/100.0;
-                    System.out.println("La velocidad acelerando es de " + velocidad);
                     cuentaKilometrosRadial.setValue(velocidad);
                     cuentaKilometrosRadial.repaint();
 
@@ -523,7 +520,6 @@ public class Salpicadero extends javax.swing.JPanel {
                     cuentaKilometrosRadial.setValue(velalmacenada);
                     cuentaKilometrosRadial.repaint();
                     
-                    System.out.println("La velocidad almacenada es de: " + velalmacenada);
 
                     double revoluciones = Math.round(cRevoluciones.getRevoluciones()*100.0)/100.0;
                     cRevoluciones.setRevolucionesAlmacenada(revoluciones);

@@ -4,13 +4,9 @@ public class CuentaRevoluciones {
     private double cambioAceite;
     private double cambioFrenos;
     private double revisionGeneral;
-    private double revConstantes;
-    private boolean constantes;
-    
     
     CuentaRevoluciones(){
         revoluciones = 0;
-        constantes = false;
     }
     
     public double getRevoluciones(){
